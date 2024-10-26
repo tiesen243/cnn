@@ -32,4 +32,4 @@ Open the project in VSCode or Jupyter Notebook to run and experiment with the mo
 
 ## License
 
-This project is licensed under the MIT[LICENSE] License.
+This project is licensed under the [MIT](LICENSE) License.
