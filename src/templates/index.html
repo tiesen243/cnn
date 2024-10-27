@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Prediction</title>
+  <link rel="icon" href="../static/favicon.ico" />
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-[#0a0a0a] text-[#fafafa]">
+  <div id="app">
+    <main class="container mx-auto px-8 max-w-screen-md text-center my-20">
+      <h1 class="text-4xl font-bold mb-6">Handwritten Digit Prediction</h1>
+
+      <div class="grid grid-cols-3 gap-4">
+        <canvas ref="image" class="w-full col-span-2 aspect-square border border-gray-300 rounded-lg"></canvas>
+
+        <div class="grid grid-cols-2 gap-4">
+          <button v-on:click="predict"
+            class="h-9 px-3 py-2 inline-flex items-center justify-center rounded-lg bg-[#fafafa] text-[#0a0a0a] hover:bg-[#d4d4d4] transition-colors">
+            Predict
+          </button>
+
+          <button v-on:click="clear"
+            class="h-9 px-3 py-2 inline-flex items-center justify-center rounded-lg bg-[#0a0a0a] text-[#fafafa] border border-[#404040] hover:bg-[#404040]">
+            Clear
+          </button>
+
+          <p class="inline-flex gap-2 text-left text-2xl font-bold">
+            Prediction:
+            <span v-text="prediction" class="font-normal"></span>
+          </p>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script type="module" src="../static/main.js"></script>
+</body>
+
+</html>
