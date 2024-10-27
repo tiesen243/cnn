@@ -15,6 +15,9 @@ class CNN(nn.Module):
         self.layers = nn.ModuleList(layers)
         self.to(device)
 
+    def add(self, layer: nn.Module):
+        self.layers.append(layer)
+
     def forward(self, x: torch.Tensor):
         for layer in self.layers:
             x = layer(x)
