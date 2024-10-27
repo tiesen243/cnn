@@ -30,8 +30,6 @@ model.eval()
 
 # Initialize the Flask app
 app = flask.Flask(__name__)
-app.config["CORS_HEADERS"] = "Content-Type"
-app.config["UPLOAD_FOLDER"] = "uploads"
 flask_cors.CORS(app)
 current_image = None
 
@@ -58,7 +56,7 @@ def preprocess_image(image):
 # Define a route for the prediction
 @app.route("/predict", methods=["POST"])
 def predict():
-    image = flask.request.files.get("file")
+    image = flask.request.files.get("image")
     if image is None:
         return flask.redirect(flask.url_for("index"))
 
@@ -87,7 +85,7 @@ def index():
                 <h1 class="scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl">Upload new File for Prediction</h1>
 
                 <form method=post enctype=multipart/form-data action=predict class="flex gap-4 items-center">
-                    <input type=file name=file class="flex h-10 w-full rounded-md border border-gray-500 bg-black px-3 py-2 text-sm ring-offset-black file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-white placeholder:text-gray-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50">
+                    <input type=file name=image class="flex h-10 w-full rounded-md border border-gray-500 bg-black px-3 py-2 text-sm ring-offset-black file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-white placeholder:text-gray-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50">
                     <button class="h-10 px-4 py-2 inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium bg-white text-black hover:bg-white/90 ring-offset-black transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0">
                         Upload
                     </button>
